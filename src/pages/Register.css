@@ -58,3 +58,13 @@
     text-decoration: none;
 }
 
+.container form p {
+    background-color:  rgb(236, 93, 112);
+    color: #fff;
+    margin-bottom: 15px;
+    border: 1px solid  rgb(243, 81, 102);
+    padding: 10px;
+    text-align: center;
+    float: right;
+}
+

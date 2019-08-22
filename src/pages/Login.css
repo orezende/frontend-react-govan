@@ -18,7 +18,7 @@
 }
 
 .container form input{
-    background: rgb(61, 49, 87, 0.4);
+    background: rgb(61, 49, 87);
     margin-top: 5px;
     border: 0px ;
     height: 48px;
@@ -40,7 +40,6 @@
 .container form button{
     margin-top: 10px;
     border: 0;
-    
     height: 48px;
     font-size: 16px;
     background: rgb(241, 82, 93);

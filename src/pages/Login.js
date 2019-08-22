@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Logo from '../assets/Logo.svg';
 
 import './Login.css';
 
 
-export default class Login extends Component {
+class Login extends Component {
     state = {
         email: "",
         password: "",
@@ -42,3 +42,5 @@ export default class Login extends Component {
         );
     }
 }
+
+export default withRouter(Login);

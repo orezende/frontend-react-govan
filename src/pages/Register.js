@@ -10,13 +10,14 @@ export default class Login extends Component {
     state = {
         email: "",
         password: "",
-        error: ""
+        birthDay: "",
+        error: "",
     };
 
     handleLogin = e => {
         e.preventDefault();
 
-        alert("Logando");
+        alert("Registrando");
     }
 
     render() {
@@ -34,6 +35,30 @@ export default class Login extends Component {
                         type="password"
                         placeholder="Digite sua senha"
                         onChange={e => this.setState({ email: e.target.value })} />
+
+                    <input
+                        type="password"
+                        placeholder="Confirme sua senha"
+                        onChange={e => this.setState({ email: e.target.value })} />
+
+                    <input
+                        type="date"
+                        placeholder="Insira sua data de nascimento"
+                        onChange={e => this.setState({ birthDay: e.target.value })} />
+
+                    <input
+                        type="number"
+                        min="0"
+                        step="1"
+                        placeholder="Digite seu CPF"
+                        onChange={e => this.setState({ birthDay: e.target.value })} />
+
+                    <input
+                        type="number"
+                        min="0"
+                        step="1"
+                        placeholder="Digite seu número de celular"
+                        onChange={e => this.setState({ birthDay: e.target.value })} />
 
                     <button type="submit">Entrar</button>
                     <Link to="/register">Quero me cadastrar</Link>

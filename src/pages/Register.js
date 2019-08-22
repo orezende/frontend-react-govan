@@ -32,9 +32,8 @@ class Register extends Component {
         else{
             try{
                 await api.post('register/user', {name, email, password, birthDay, cpf, phoneNumber});
-                this.props.history.push('/');
+                this.props.history.push('/app');
             }catch(err){
-                debugger;
                 this.setState({error: err.response.data.error});
             }
         }

@@ -2,10 +2,6 @@ import React from 'react';
 import logo from '../assets/Logo.svg';
 import './InitialPage.css';
 
-import api from '../services/api'
-
-import { Link } from 'react-router-dom';
-// import { Container } from './styles';
 
 export default function InitialPage({ history }) {
 

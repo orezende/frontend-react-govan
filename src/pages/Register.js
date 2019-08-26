@@ -11,11 +11,9 @@ import './Register.css';
 
 class Register extends Component {
     state = {
-        name: "",
         email: "",
         password: "",
-        birthDay: "",
-        cpf: "",
+        passwordConfirmed: "",
         phoneNumber: "",
         error: "",
     };
@@ -23,22 +21,24 @@ class Register extends Component {
     handleLogin = async e => {
         e.preventDefault();
 
-        const { name, email, password, birthDay, cpf, phoneNumber } = this.state;
-        console.log(this.state);
+        const { email, password, passwordConfirmed, phoneNumber } = this.state;
 
-        if (!name || !email || !password || !birthDay || !cpf || !phoneNumber) {
+        if (!email || !password || !passwordConfirmed || !phoneNumber) {
             this.setState({ error: "Preencha todos os campos antes de prosseguir -_- " });
-        }
-        else{
-            try{
-                await api.post('register/user', {name, email, password, birthDay, cpf, phoneNumber});
-                this.props.history.push('/app');
-            }catch(err){
-                this.setState({error: err.response.data.error});
+        } else {
+            try {
+                if (password === passwordConfirmed) {
+                    console.log("bateu")
+                    await api.post('register/user', { email, password, phoneNumber });
+                    console.log("bateu");
+                    this.props.history.push('/login');
+                } else {
+                    this.setState({ error: "Os campos de senhas devem ser iguais" });
+                }
+            } catch (err) {
+                this.setState({ error: err.response.data.error });
             }
         }
-
-
     }
 
     render() {
@@ -48,10 +48,6 @@ class Register extends Component {
                     <img src={Logo} alt="GoVan" />
                     {this.state.error && <p>{this.state.error}</p>}
 
-                    <input
-                        type="text"
-                        placeholder="Digite seu nome completo"
-                        onChange={e => this.setState({ name: e.target.value })} />
 
                     <input
                         type="email"
@@ -61,26 +57,11 @@ class Register extends Component {
                         type="password"
                         placeholder="Digite sua senha"
                         onChange={e => this.setState({ password: e.target.value })} />
-
                     <input
                         type="password"
-                        placeholder="Confirme sua senha" />
+                        placeholder="Confirme sua senha"
+                        onChange={e => this.setState({ passwordConfirmed: e.target.value })} />
 
-                    <InputMask
-                        mask="99/99/9999"
-                        type="text"
-                        placeholder="Insira sua data de nascimento"
-                        onChange={e => this.setState({ birthDay: e.target.value })} >
-                    </InputMask>
-
-                    <InputMask
-                        mask="999.999.999-99"
-                        type="text"
-                        min="0"
-                        step="1"
-                        placeholder="Digite seu CPF"
-                        onChange={e => this.setState({ cpf: e.target.value })} >
-                    </InputMask>
 
                     <InputMask
                         mask="(99) 9 9999-9999"

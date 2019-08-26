@@ -1,4 +1,4 @@
-        import React from 'react';
+import React from 'react';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -7,6 +7,9 @@ import PrivateRoute from './components/PrivateRoute';
 import InitialPage from './pages/InitialPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import NotFound from './pages/NotFound';
+
+import Index from './pages/Index';
 
 const Routes = () => (
     <BrowserRouter>
@@ -15,8 +18,8 @@ const Routes = () => (
             <Route exact path="/login" component={Login} />
             <Route path="/signup" component={() => <h1> Signup </h1>} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path="/app" component={() => <h1> App </h1>} />
-            <Route path="*" component={() => <h1> Page not found </h1>} />
+            <PrivateRoute path="/index" component={Index} />
+            <Route path="*" component={NotFound} />
         </Switch>
     </BrowserRouter>
 );

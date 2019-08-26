@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import InputMask from 'react-input-mask';
+
 import Logo from '../assets/Logo.svg';
-
 import {login} from '../services/auth'
-
 import api from '../services/api';
-
 import './Login.css';
+
+
 
 
 class Login extends Component {
     state = {
-        email: "",
+        phoneNumber: "",
         password: "",
         error: ""
     };
 
     handleLogin = async e => {
         e.preventDefault();
-        const { email, password } = this.state;
-        if (!email || !password) {
+        const { phoneNumber, password } = this.state;
+        if (!phoneNumber || !password) {
           this.setState({ error: "Preencha todos os campos para prosseguir!" });
         } else {
           try {
-            const response = await api.post("auth/user", { email, password });
+            const response = await api.post("auth/user", { phoneNumber, password });
             login(response.data.token);
-            this.props.history.push("/app");
+            this.props.history.push("/index");
           } catch (err) {
             this.setState({error: err.response.data.error});
           }
@@ -39,10 +40,14 @@ class Login extends Component {
                     <img src={Logo} alt="GoVan" />
                     {this.state.error && <p>{this.state.error}</p>}
 
-                    <input
-                        type="text"
-                        placeholder="Digite seu e-mail"
-                        onChange={e => this.setState({ email: e.target.value })} />
+                    <InputMask
+                        mask="(99) 9 9999-9999"
+                        min="0"
+                        step="1"
+                        placeholder="Digite seu número de celular"
+                        onChange={e => this.setState({ phoneNumber: e.target.value })} >
+                    </InputMask>
+
                     <input
                         type="password"
                         placeholder="Digite sua senha"

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/Logo.svg';
-import './InitialPage.css';
+import './styles/InitialPage.css';
 
 
 export default function InitialPage({ history }) {

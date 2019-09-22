@@ -5,7 +5,7 @@ import InputMask from 'react-input-mask';
 import Logo from '../assets/Logo.svg';
 import {login} from '../services/auth'
 import api from '../services/api';
-import './Login.css';
+import './styles/Login.css';
 
 
 
@@ -44,7 +44,7 @@ class Login extends Component {
                         mask="(99) 9 9999-9999"
                         min="0"
                         step="1"
-                        placeholder="Digite seu número de celular"
+                        placeholder="Digite seu número de celular."
                         onChange={e => this.setState({ phoneNumber: e.target.value })} >
                     </InputMask>
 

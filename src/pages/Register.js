@@ -6,7 +6,7 @@ import api from '../services/api';
 
 import Logo from '../assets/Logo.svg';
 
-import './Register.css';
+import './styles/Register.css';
 
 
 class Register extends Component {
@@ -28,9 +28,7 @@ class Register extends Component {
         } else {
             try {
                 if (password === passwordConfirmed) {
-                    console.log("bateu")
                     await api.post('register/user', { email, password, phoneNumber });
-                    console.log("bateu");
                     this.props.history.push('/login');
                 } else {
                     this.setState({ error: "Os campos de senhas devem ser iguais" });
